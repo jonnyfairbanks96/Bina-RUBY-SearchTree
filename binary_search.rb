@@ -1,3 +1,4 @@
+# Binary search for a sorted unique array.
 class BinarySearch
   attr_reader :list
 
