@@ -1,4 +1,5 @@
 require 'pry'
+
 class Node
   attr_reader :value
   attr_accessor :left, :right
@@ -8,11 +9,18 @@ class Node
   end
 
   def leaf?
-    right.nil? || left.nil?
+    right.nil? && left.nil?
   end
 
   def inner?
-    right || left
+    !right.nil? || !left.nil?
+  end
+
+  # traverse the tree left to right
+  def each(&block)
+    left.each(&block) if left
+    block.call(self)
+    right.each(&block) if right
   end
 end
 
@@ -27,16 +35,10 @@ class BinaryTree
     @list = new_list(list)
   end
 
-  def show_list
-    list.each do |node|
-
-    end
-  end
-
   private
 
   def new_list(list)
-    list.shuffle.map do |item|
+    list.shuffle.each do |item|
       if root_node == nil
         @root_node = Node.new(item)
         next
@@ -54,16 +56,6 @@ class BinaryTree
       return build(node, other.left) if other.left
 
       other.left = Node.new(node)
-    end
-  end
-
-  def compare(node)
-    if node.left.nil?
-      :left
-    elsif node.right.nil?
-      :right
-    else
-      :node_full
     end
   end
 end
