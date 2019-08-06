@@ -6,7 +6,10 @@ module BinaryRubyTree
       unless list.sort.uniq == list
         raise ArgumentError, 'Cannot build a tree with an un-sorted, non-unique list'
       end
-      new_tree(list)
+
+      if list != []
+        new_tree(list)
+      end
     end
 
     def add(node)
