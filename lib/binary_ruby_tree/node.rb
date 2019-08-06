@@ -1,7 +1,7 @@
 module BinaryRubyTree
   class Node
     attr_reader :value
-    attr_accessor :left, :right, :parent, :level
+    attr_accessor :left, :right, :level
 
     def initialize(value = nil)
       @value = value

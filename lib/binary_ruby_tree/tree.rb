@@ -16,15 +16,16 @@ module BinaryRubyTree
       build(node, root_node)
     end
 
-    def search(value, node = root_node)
+    def search(value, node = root_node, level = 0)
       return nil unless node
 
       if value == node.value
+        puts " Level: #{level} ".center(30, '=')
         node
       elsif value > node.value
-        search(value, node.right)
+        search(value, node.right, level += 1)
       elsif value < node.value
-        search(value, node.left)
+        search(value, node.left, level += 1)
       else
         puts 'Value does not exsist'
         nil
@@ -48,7 +49,9 @@ module BinaryRubyTree
     end
 
     def build(node, other)
-      if node > other.value
+      if root_node.nil?
+        @root_node = BinaryRubyTree::Node.new(node)
+      elsif node > other.value
         return build(node, other.right) if other.right
 
         other.right = BinaryRubyTree::Node.new(node)
