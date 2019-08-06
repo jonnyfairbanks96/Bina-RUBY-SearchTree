@@ -1,2 +1,4 @@
-# Bina-RUBY-SearchTree
-Binary Trees in Ruby
+# Binary Ruby Tree
+ Binary Trees in Ruby
+
+ Work in progress

@@ -1,7 +1,7 @@
-module BinaRubySearchTree
+module BinaryRubyTree
   class Node
     attr_reader :value
-    attr_accessor :left, :right
+    attr_accessor :left, :right, :parent, :level
 
     def initialize(value = nil)
       @value = value
